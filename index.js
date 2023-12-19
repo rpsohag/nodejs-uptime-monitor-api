@@ -1,21 +1,17 @@
 const http = require("http");
 const { handeReqRes } = require("./helpers/handleReqRes");
+const environmentToExport = require("./helpers/environments");
 
 // app object  - module scaffolding
 
 const app = {};
 
-// configuration
-app.config = {
-  port: 3000,
-};
-
 // create server
 
 app.createServer = () => {
   const server = http.createServer(app.handleReqRes);
-  server.listen(app.config.port, () => {
-    console.log(`Listening to port ${app.config.port}`);
+  server.listen(environmentToExport.port, () => {
+    console.log(`Listening to port ${environmentToExport.port}`);
   });
 };
 
